@@ -75,7 +75,7 @@ nixos::dots() {
 
   mkdir -p /mnt/etc
   rm -rf /mnt/etc/nixos
-  git clone https:://github.com/fentas/nixdots /mnt/etc/nixos
+  git clone https://github.com/fentas/nixdots /mnt/etc/nixos
 }
 
 nixos::generate() {
