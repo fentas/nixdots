@@ -19,7 +19,7 @@ disk::ask() {
   while true; do
     echo -n "[0-$(( ${#disks[@]} - 1 ))]: "
     read -r disk_index
-    [ "${disk_index}" -ge 0 ] && [ "${disk_index}" -lt "${#disks[@]}" ] && break ||
+    [[ "${disk_index}" =~ ^[0-9]+$ ]] && [ "${disk_index}" -ge 0 ] && [ "${disk_index}" -lt "${#disks[@]}" ] && break ||
       echo "Invalid input 😕. Make sure to select the correct disk."
   done
   disk="$(echo "${disks[$disk_index]}" | cut -d' ' -f1)"
