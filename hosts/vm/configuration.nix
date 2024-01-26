@@ -6,8 +6,8 @@
 { lib, config, pkgs, ... }:
 {
   # Internationalisation options
-  i18n.defaultLocale = "pt_BR.UTF-8";
-  console.keyMap = "br-abnt2";
+  i18n.defaultLocale = "en_US.UTF-8";
+  console.keyMap = "us";
 
   # Options for the screen
   virtualisation.vmVariant = {
@@ -48,7 +48,7 @@
 
   # X configuration
   services.xserver.enable = true;
-  services.xserver.layout = "br";
+  services.xserver.layout = "us";
 
   services.xserver.displayManager.autoLogin.user = "guest";
   services.xserver.desktopManager.xfce.enable = true;

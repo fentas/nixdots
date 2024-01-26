@@ -9,13 +9,13 @@
       "locked": {
         "lastModified": 1705509615,
         "narHash": "sha256-dKZTQzGRNVXA9ruGX0durCzpmvd7pQZJOFJbbXt35tQ=",
-        "owner": "redyf",
+        "owner": "fentas",
         "repo": "Neve",
         "rev": "bc3909db2a0d0e7596a2242c7c5eb6f1a2ef8033",
         "type": "github"
       },
       "original": {
-        "owner": "redyf",
+        "owner": "fentas",
         "repo": "Neve",
         "type": "github"
       }
@@ -416,13 +416,13 @@
       "locked": {
         "lastModified": 1704808993,
         "narHash": "sha256-q/AoSwEpvB4L1Swmw8UUpjIb2JKeO9u7tdve5qghEH8=",
-        "owner": "redyf",
+        "owner": "fentas",
         "repo": "monolisa",
         "rev": "5a181740444159f08cdaba8d900e083d99f17785",
         "type": "github"
       },
       "original": {
-        "owner": "redyf",
+        "owner": "fentas",
         "repo": "monolisa",
         "type": "github"
       }

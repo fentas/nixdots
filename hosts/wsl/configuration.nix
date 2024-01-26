@@ -40,7 +40,7 @@
   };
 
   # Configure console keymap
-  console.keyMap = "br-abnt2";
+  console.keyMap = "us";
 
   # Set your time zone.
   time.timeZone = "America/Bahia";

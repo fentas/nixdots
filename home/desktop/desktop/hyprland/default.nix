@@ -46,7 +46,7 @@ in
       };
 
       input = {
-        kb_layout = "br";
+        kb_layout = "us";
         kb_variant = "";
         kb_model = "";
         kb_options = "";

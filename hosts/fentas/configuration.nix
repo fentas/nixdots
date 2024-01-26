@@ -210,7 +210,7 @@
         };
       };
       videoDrivers = [ "nvidia" ];
-      layout = "br";
+      layout = "us";
       xkbVariant = "";
       libinput = {
         enable = true;
@@ -226,7 +226,7 @@
     flatpak.enable = false;
   };
 
-  console.keyMap = "br-abnt2";
+  console.keyMap = "us";
 
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -243,9 +243,9 @@
 
   users = {
     users = {
-      redyf = {
+      fentas = {
         isNormalUser = true;
-        description = "redyf";
+        description = "fentas";
         initialPassword = "123456";
         shell = pkgs.zsh;
         extraGroups = [ "networkmanager" "wheel" "input" "docker" "libvirtd" ];
@@ -260,7 +260,7 @@
       wheelNeedsPassword = true;
       extraRules = [
         {
-          users = [ "redyf" ];
+          users = [ "fentas" ];
           keepEnv = true;
           persist = true;
         }

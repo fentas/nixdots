@@ -23,11 +23,11 @@ in
       export PATH=$PATH:~/.local/bin/
       export PATH=/tmp/lazy-lvim/bin:$PATH
       export PATH="$HOME/.emacs.d/bin:$PATH"
-      export PATH="$PATH:/home/redyf/.nix-profile/bin/elixir"
-      export PATH="$PATH:/home/redyf/.nix-profile/bin/swww"
-      export PATH="$PATH:/home/redyf/.nix-profile/bin/swww-daemon"
+      export PATH="$PATH:/home/fentas/.nix-profile/bin/elixir"
+      export PATH="$PATH:/home/fentas/.nix-profile/bin/swww"
+      export PATH="$PATH:/home/fentas/.nix-profile/bin/swww-daemon"
       export PATH="$PATH:$FORGIT_INSTALL_DIR/bin"
-      export PATH="$PATH:/home/redyf/.config/nvim/bin"
+      export PATH="$PATH:/home/fentas/.config/nvim/bin"
       export WINIT_UNIX_BACKEND=x11 neovide
 
       # Autosuggest
@@ -130,7 +130,7 @@ in
       la = "eza -a";
       mv = "mv -i";
       rip = "rip -i";
-      rebuild = "cd ~/flake && doas nixos-rebuild switch --flake .#redyf";
+      rebuild = "cd ~/flake && doas nixos-rebuild switch --flake .#fentas";
       postman = "postman --use-gl=desktop";
       insomnia = "insomnia --use-gl=desktop";
       beekeeper-studio = "beekeeper-studio --use-gl=desktop";

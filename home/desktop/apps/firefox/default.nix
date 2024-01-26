@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   programs.firefox = {
     enable = true;
-    profiles.redyf = {
+    profiles.fentas = {
       search.default = "Google";
       search.force = true;
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [

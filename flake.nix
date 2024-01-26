@@ -1,5 +1,5 @@
 {
-  description = "Redyf's NixOS config for desktop and WSL";
+  description = "fentas's NixOS config for desktop and WSL";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -17,7 +17,7 @@
     nur.url = "github:nix-community/NUR";
     nix-colors.url = "github:misterio77/nix-colors";
     spicetify-nix.url = "github:the-argus/spicetify-nix";
-    Neve.url = "github:redyf/Neve";
+    Neve.url = "github:fentas/Neve";
 
     # SFMono w/ patches
     sf-mono-liga-src = {
@@ -52,7 +52,7 @@
     in
     {
       nixosConfigurations = {
-        redyf =
+        fentas =
           nixpkgs.lib.nixosSystem
             {
               system = "x86_64-linux";
@@ -64,14 +64,14 @@
                   ;
               };
               modules = [
-                ./hosts/redyf/configuration.nix
+                ./hosts/fentas/configuration.nix
                 home-manager.nixosModules.home-manager
                 {
                   home-manager = {
                     useUserPackages = true;
                     useGlobalPkgs = false;
                     extraSpecialArgs = { inherit inputs spicetify-nix; };
-                    users.redyf = ./home/desktop/home.nix;
+                    users.fentas = ./home/desktop/home.nix;
                   };
                 }
                 hyprland.nixosModules.default

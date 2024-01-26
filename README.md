@@ -3,13 +3,13 @@
   <br>
   <br>
   <div>
-    <a href="https://github.com/redyf/nixdots/issues">
-        <img src="https://img.shields.io/github/issues/redyf/nixdots?color=fab387&labelColor=303446&style=for-the-badge">
+    <a href="https://github.com/fentas/nixdots/issues">
+        <img src="https://img.shields.io/github/issues/fentas/nixdots?color=fab387&labelColor=303446&style=for-the-badge">
     </a>
-    <a href="https://github.com/redyf/nixdots/stargazers">
-        <img src="https://img.shields.io/github/stars/redyf/nixdots?color=ca9ee6&labelColor=303446&style=for-the-badge">
+    <a href="https://github.com/fentas/nixdots/stargazers">
+        <img src="https://img.shields.io/github/stars/fentas/nixdots?color=ca9ee6&labelColor=303446&style=for-the-badge">
     </a>
-    <a href="https://github.com/redyf/nixdots/blob/master/LICENSE">
+    <a href="https://github.com/fentas/nixdots/blob/master/LICENSE">
         <img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&logoColor=ca9ee6&colorA=313244&colorB=cba6f7"/>
     </a>
     <br>
@@ -77,19 +77,15 @@
 
 - Rebuild and switch to change the system configuration (in the configuration directory):
 
-```
+```bash
 rebuild
-```
-
-OR
-
-```
-sudo nixos-rebuild switch --flake '.#redyf'
+# or
+sudo nixos-rebuild switch --flake '.#fentas'
 ```
 
 - Connect to internet (Change what's inside the brackets with your info).
 
-```
+```bash
 iwctl --passphrase [passphrase] station [device] connect [SSID]
 ```
 
@@ -102,72 +98,19 @@ Also I'm going to use an ethernet cable for the tutorial to make things easier. 
 
 **Only follow these steps after using the bootable drive, changing BIOS boot priority and getting into the installation!**
 
-```
-First part:
-
+```bash
+# if needed some terminal changes
 video=1920x1080
-
 setfont ter-128n
 
-configure networking as needed (skip this if you're using ethernet)
-
-sudo -i
-
-lsblk (check info about partitions and the device you want to use for the installation)
-
-gdisk /dev/vda (change according to your system, for me it's /dev/nvme0n1)
-
-then configure 600M type ef00, rest ext4 type 8300 as described below
-
-Type "n" to make a new partition, choose the partition number, first sector can be default but last sector should be 600M. Hex code for EFI is ef00.
-
-Now type n again to make another partition, this time we'll leave everything as default. After finishing these steps, make sure to write it to the disk by typing "w".
-
-lsblk
-
-mkfs.fat -F 32 -n boot /dev/vda1 (Format the partitions)
-
-mkfs.ext4 -L nixos /dev/vda2
-
-mount /dev/disk/by-label/nixos /mnt (Mount partitions)
-mkdir /mnt/boot (Create a directory for boot)
-mount /dev/disk/by-label/boot /mnt/boot
-```
-
-After mounting the partitions, you can move to the second part...
-
-```
-# go inside a nix shell with the specified programs
-nix-shell -p git nixUnstable neovim
-
-# create this folder if necessary
-mkdir -p /mnt/etc/
-
-# clone the repo
-git clone https://github.com/redyf/nixdots.git /mnt/etc/nixos --recurse-submodules
-
-# remove this file
-rm /mnt/etc/nixos/hosts/redyf/hardware-configuration.nix
-
-# generate the config and take some files
-nixos-generate-config --root /mnt
-rm /mnt/etc/nixos/configuration.nix
-mv /mnt/etc/nixos/hardware-configuration.nix /mnt/etc/nixos/hosts/redyf
-
-# make sure you're in this path
-cd /mnt/etc/nixos
-
-# Install my config:
-nixos-install --flake '.#redyf'
-
-# Obs:
-If you'd like to use my config as a template, all you need to do is replace "redyf" with your username.
+# ! configure networking as needed
+sudo nix-shell --command "$(curl -sfL https://github.com/fentas/nixdots/blob/main/install.sh)"
 ```
 
 Credits for the installation section goes to [Stephenstechtalks](https://github.com/stephenstechtalks) and [AlphaTechnolog](https://github.com/AlphaTechnolog) as they helped a lot with their installation guides.
 
 ## Conclusion
 
-That should be all! If you have any problem, feel free to make an issue in the github repo. (https://github.com/Redyf/nixdots/issues).
+That should be all! If you have any problem, feel free to make an issue in the github repo. (https://github.com/fentas/nixdots/issues).
 
-The code is licensed under the MIT license, so you can use or distribute the code however you like. If you have any questions, contact me on Discord: `redyf`.
+The code is licensed under the MIT license, so you can use or distribute the code however you like.
