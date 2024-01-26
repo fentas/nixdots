@@ -4,10 +4,8 @@
 set -euo pipefail
 
 is_user_root() { [ "${EUID:-$(id -u)}" -eq 0 ]; }
-partition() { 
-  echo -n "${1}"
-  echo "${1}" | grep -vq "^nvme" || echo -n "p"
-  echo -n "${2}"
+partition() {
+  lsblk -nplo NAME "${1}" | tail -n+2 | grep "${2}$"
 }
 
 disk::ask() {
