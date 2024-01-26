@@ -107,7 +107,7 @@ main() {
   disk::mount
 
   nixos::dots
-  inxos::generate
+  nixos::generate
   nixos::install
 
 }
