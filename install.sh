@@ -16,8 +16,12 @@ disk::ask() {
   for i in "${!disks[@]}"; do
     echo "$i) ${disks[$i]}"
   done
-  echo -n "[0-${#disks[@]}]: "
-  read -r disk_index
+  while true; do
+    echo -n "[0-$(( ${#disks[@]} - 1 ))]: "
+    read -r disk_index
+    [ "${disk_index}" -ge 0 ] && [ "${disk_index}" -lt "${#disks[@]}" ] && break ||
+      echo "Invalid input 😕. Make sure to select the correct disk."
+  done
   disk="$(echo "${disks[$disk_index]}" | cut -d' ' -f1)"
   echo "Installing to ${disk}"
   read -rsn1 -p"Press any key to continue"; echo
