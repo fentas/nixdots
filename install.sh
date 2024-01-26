@@ -36,7 +36,7 @@ disk::format() {
   disk::check
   echo "Do you want to format ${disk}? (y/n)"
   read -rsn1 answer
-  [ "${answer}" = "y" ] || exit 1
+  [ "${answer}" = "y" ] || return 1
 
   echo "Wiping disk"
   sgdisk --zap-all "${disk}"
