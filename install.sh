@@ -5,9 +5,9 @@ set -euo pipefail
 
 is_user_root() { [ "${EUID:-$(id -u)}" -eq 0 ]; }
 partition() { 
-  echo "${1}"
-  echo "${1}" | grep -vq "^nvme" || echo "p"
-  echo "${2}"
+  echo -n "${1}"
+  echo "${1}" | grep -vq "^nvme" || echo -n "p"
+  echo -n "${2}"
 }
 
 disk::ask() {
