@@ -104,7 +104,8 @@ video=1920x1080
 setfont ter-128n
 
 # ! configure networking as needed
-sudo nix-shell --command "$(curl -sfL https://github.com/fentas/nixdots/blob/main/install.sh)"
+curl -sfL https://raw.githubusercontent.com/fentas/nixdots/main/install.sh -O install.sh
+sudo nix-shell ./install.sh
 ```
 
 Credits for the installation section goes to [Stephenstechtalks](https://github.com/stephenstechtalks) and [AlphaTechnolog](https://github.com/AlphaTechnolog) as they helped a lot with their installation guides.

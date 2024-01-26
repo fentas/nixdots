@@ -4,6 +4,11 @@
 set -euo pipefail
 
 is_user_root() { [ "${EUID:-$(id -u)}" -eq 0 ]; }
+partition() { 
+  echo "${1}"
+  echo "${1}" | grep -vq "^nvme" || echo "p"
+  echo "${2}"
+}
 
 disk::ask() {
   readarray -t disks < <(lsblk -d -n -p -l -o NAME,SIZE,MODEL)
@@ -43,20 +48,23 @@ disk::format() {
   sgdisk --typecode=2:8300 "${disk}"
 
   echo "Formatting partitions"
-  mkfs.vfat -F32 "${disk}1"
-  mkfs.ext4 "${disk}2"
+  mkfs.vfat -F32 "$(partition "${disk}" 1)"
+  mkfs.ext4 "$(partition "${disk}" 2)"
 }
 
 disk::mount() {
   disk::check
   echo "Mounting partitions"
 
-  mount | grep -vq "${disk}1" || umount "${disk}1"
-  mount | grep -vq "${disk}2" || umount "${disk}2"
+  local -r p1="$(partition "${disk}" 1)"
+  local -r p2="$(partition "${disk}" 2)"
 
-  mount "${disk}2" /mnt
+  mount | grep -vq "${p1}" || umount "${p1}"
+  mount | grep -vq "${p2}" || umount "${p2}"
+
+  mount "${p2}" /mnt
   mkdir -p /mnt/boot
-  mount "${disk}1" /mnt/boot
+  mount "${p1}" /mnt/boot
 }
 
 nixos::dots() {
